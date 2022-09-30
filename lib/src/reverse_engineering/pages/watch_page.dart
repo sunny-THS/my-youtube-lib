@@ -179,13 +179,13 @@ class _InitialData extends InitialData {
           ?.map((e) => e['compactVideoRenderer'])
           ?.map((video) => {
                 'videoId': video['videoId'],
-                'title': video['title']['simpleText'],
-                'thumbnail': video['thumbnail']['thumbnails'][0]['url'],
-                'author': video['shortBylineText']['runs'][0]['text'],
-                'publishedTimeText': video['publishedTimeText']['simpleText'],
-                'duration': video['lengthText']['simpleText'],
-                'viewCount': video['shortViewCountText']['accessibility']
-                    ['accessibilityData']['label']
+                'title': video['title']?['simpleText'],
+                'thumbnail': video['thumbnail']?['thumbnails']?[0]?['url'],
+                'author': video['shortBylineText']?['runs'][0]['text'],
+                'publishedTimeText': video['publishedTimeText']?['simpleText'],
+                'duration': video['lengthText']?['simpleText'],
+                'viewCount': video['shortViewCountText']?['accessibility']
+                    ['accessibilityData']?['label']
               })
           .toList();
     }
