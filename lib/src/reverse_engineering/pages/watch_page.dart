@@ -182,8 +182,9 @@ class _InitialData extends InitialData {
                 'title': video['title']?['simpleText'],
                 'thumbnail': video['thumbnail']?['thumbnails']?[0]?['url'],
                 'author': video['shortBylineText']?['runs'][0]['text'],
-                'publishedTimeText': video['publishedTimeText']?['simpleText'],
-                'duration': video['lengthText']?['simpleText'],
+                'duration': video['lengthText'] == null
+                    ? ''
+                    : video['lengthText']['simpleText'],
                 'viewCount': video['shortViewCountText']?['accessibility']
                     ['accessibilityData']?['label']
               })
