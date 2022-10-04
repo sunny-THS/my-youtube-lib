@@ -167,7 +167,7 @@ class _InitialData extends InitialData {
   late final int? disLikesCount = _getDislikes();
   late final List<Map>? relateVideos = _getRelateVideos();
 
-  List<Map>? _getRelateVideos() {
+  List<Map<String, String?>>? _getRelateVideos() {
     if (root['contents'] != null) {
       return root
           .get('contents')
@@ -178,10 +178,14 @@ class _InitialData extends InitialData {
           ?.where((e) => e['compactVideoRenderer'] != null)
           ?.map((e) => e['compactVideoRenderer'])
           ?.map((video) => {
-                'videoId': video['videoId'],
-                'title': video['title']['simpleText'],
-                'thumbnail': video['thumbnail']['thumbnails'][0]['url'],
-                'author': video['shortBylineText']['runs'][0]['text'],
+                'videoId': video['videoId'].toString(),
+                'title': video['title']['simpleText'].toString(),
+                'thumbnail':
+                    video['thumbnail']['thumbnails'][0]['url'].toString(),
+                'author':
+                    video['shortBylineText']['runs'][0]['text'].toString(),
+                'viewCount':
+                    video['viewCountText']?['simpleText']?.toString() ?? "0"
               })
           .toList();
     }
