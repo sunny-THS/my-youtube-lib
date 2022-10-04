@@ -185,7 +185,9 @@ class _InitialData extends InitialData {
                 'author':
                     video['shortBylineText']['runs'][0]['text'].toString(),
                 'viewCount':
-                    video['viewCountText']?['simpleText']?.toString() ?? "0"
+                    video['viewCountText']?['simpleText']?.toString() ?? "0",
+                "duration":
+                    video['lengthText']?['simpleText']?.toString() ?? "0:0"
               })
           .toList();
     }
